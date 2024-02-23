@@ -14,7 +14,13 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 // ? parse
-app.use(express.json());
+app.use((req, res, next) => {
+  // req.originalUrl
+  if (req.originalUrl === "/order/webhook") {
+    return next();
+  }
+  express.json()(req, res, next);
+});
 
 app.listen(port, () =>
   console.log(`e commerce app listening at http://localhost:${port}`)
