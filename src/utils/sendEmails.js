@@ -29,9 +29,9 @@ export const sendEmail = async ({ to, subject, html, attachments = [] }) => {
     });
   }
 
-  if (info.rejected.length > 0) {
-    return false;
-  }
+  // if (info.rejected.length > 0) {
+  //   return false;
+  // }
 
   return true;
 };
